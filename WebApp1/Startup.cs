@@ -32,11 +32,15 @@ namespace WebApp1
 
             app.UseRouting();
 
+            
             app.UseEndpoints(endpoints =>
             {
+                int x = 2;
                 endpoints.MapGet("/", async context =>
                 {
+                    x = x * 2;
                     await context.Response.WriteAsync(messageService.Send());
+                    await context.Response.WriteAsync("\n" + x.ToString());
                 });
             });
         }
